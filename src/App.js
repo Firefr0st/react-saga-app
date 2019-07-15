@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { Route } from 'react-router-dom';
 
 import AddToDo from './containers/AddToDo';
 import ToDoListContainer from './containers/ToDoListContainer';
+import Callback from './containers/Callback';
+import NavigationContainer from './containers/NavigationContainer';
 
+// TODO add dnd
 class App extends Component {
     render() {
         return (
@@ -13,8 +17,10 @@ class App extends Component {
                 <Row className="row">
                     <Col xs={12}>
                         <h1>To Do List</h1>
-                        <AddToDo />
-                        <ToDoListContainer />
+                        <NavigationContainer />
+                        <Route exact path="/" component={ToDoListContainer} />
+                        <Route exact path="/new-item" component={AddToDo} />
+                        <Route exact path="/callback" component={Callback} />
                     </Col>
                 </Row>
             </Container>
